@@ -3,7 +3,7 @@ import styled from "styled-components";
 import uplod from "../assets/uplod.png";
 import { useRef } from "react";
 
-const Input = ({ SetImage }) => {
+const Input = ({ SetImage, Image }) => {
   const oninputchange = (e) => {
     if (e.target.files.length > 0) {
       SetImage(e.target.files[0]);
@@ -21,6 +21,7 @@ const Input = ({ SetImage }) => {
         accept="image/*"
         name=""
         id=""
+        value={Image}
         ref={inputref}
         onChange={oninputchange}
       />

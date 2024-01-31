@@ -12,7 +12,8 @@ const Home = () => {
   const [filters, Setfilters] = useState("");
   const [Image, SetImage] = useState("");
   const onfilterchange = (e) => {
-    Setfilters(e.target.value);
+    Setfilters((prevFilters) => e.target.value);
+    console.log("filters value", filters);
   };
   useEffect(() => {
     console.log("filters1", filters);
@@ -39,7 +40,7 @@ const Home = () => {
         }}
       >
         <Card variant="outlined">
-          <Picker filter={filters} SetImage={SetImage} Image={Image} />{" "}
+          <Picker filters={filters} SetImage={SetImage} Image={Image} />{" "}
         </Card>
         {!Image ? (
           <h2>Uplod Image</h2>
@@ -60,7 +61,7 @@ const Home = () => {
           alignItems: "flex-start",
         }}
       >
-        {Image && <Filter onchangefilter={onfilterchange} />}{" "}
+        {Image && <Filter onchangefilter={onfilterchange} filters={filters} />}{" "}
       </Grid>
     </Grid>
   );

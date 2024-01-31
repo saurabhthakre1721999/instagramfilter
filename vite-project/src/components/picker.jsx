@@ -3,18 +3,18 @@ import Input from "./input";
 import { useState } from "react";
 import styled from "styled-components";
 
-const Picker = ({ filter, Image, SetImage }) => {
+const Picker = ({ filters, Image, SetImage }) => {
   const img = Image ? URL.createObjectURL(Image) : null;
-
+  console.log("pecker", filters);
   return (
     <Uploder>
       {Image ? (
         <span style={{}}>
-          {Image && <Photo src={img} alt="" style={{ filter: filter }} />}
+          {Image && <Photo className={filters} src={img} alt="" />}
         </span>
       ) : (
         <span>
-          <Input SetImage={SetImage} />
+          <Input SetImage={SetImage} Image={Image} />
         </span>
       )}
     </Uploder>
